@@ -116,7 +116,8 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <control:PersonCard Width="180" Margin="5"/>
+                        <control:PersonCard Width="180" Margin="5"
+                            HintText="{Binding Email, StringFormat='Email: {0}'}"/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>

@@ -6,6 +6,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:model="clr-namespace:GamanetDemo.Model"
              xmlns:converters="clr-namespace:GamanetDemo.UI.Converters"
+             xmlns:control="clr-namespace:GamanetDemo.UI.Control"
              d:DataContext="{d:DesignInstance Type=model:PersonEntity}"
              mc:Ignorable="d"
              d:DesignWidth="180">
@@ -14,7 +15,8 @@
     </UserControl.Resources>
     <Grid x:Name="RootContainer">
         <materialDesign:Card UniformCornerRadius="8" Padding="12"
-                             Background="{Binding Country, Converter={StaticResource CountryToColorConverter}}">
+                             Background="{Binding Country, Converter={StaticResource CountryToColorConverter}}"
+                             ToolTip="{Binding HintText, RelativeSource={RelativeSource AncestorType=control:PersonCard}}">
             <StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
                     <materialDesign:PackIcon Kind="Account" VerticalAlignment="Center"

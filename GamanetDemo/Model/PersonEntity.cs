@@ -5,7 +5,8 @@ internal class PersonEntity : PropertyChangedBase
     private string _name = string.Empty;
     private string _country = string.Empty;
     private string _phone = string.Empty;
-    
+    private string _email = string.Empty;
+
     public string Name
     {
         get => _name;
@@ -38,7 +39,19 @@ internal class PersonEntity : PropertyChangedBase
             {
                 _phone = value;
                 OnPropertyChanged();
-            } 
+            }
+        }
+    }
+
+    public string Email
+    {
+        get => _email;
+        set {
+            if (_email.Equals(value) == false)
+            {
+                _email = value;
+                OnPropertyChanged();
+            }
         }
     }
 }

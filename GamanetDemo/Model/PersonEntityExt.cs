@@ -8,6 +8,7 @@ internal static class PersonEntityExt
     {
         to.Name = from.name;
         to.Country = from.country;
+        to.Email = from.email;
         to.Phone = from.phone;
         return true;
     }
