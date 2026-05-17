@@ -12,7 +12,7 @@ public partial class MainPanel : UserControl
     public MainPanel()
     {
         InitializeComponent();
-        this.DataContextChanged += MainPanel_DataContextChanged;
+        DataContextChanged += MainPanel_DataContextChanged;
     }
 
     private async void MainPanel_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
