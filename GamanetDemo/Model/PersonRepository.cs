@@ -12,7 +12,7 @@ internal class PersonRepository
     public PersonRepository(_AppContext context)
     {
         _appContext = context;
-        Persons = new ObservableCollection<PersonEntity>();
+        Persons = new();
     }
 
     public async Task LoadDataAsync()

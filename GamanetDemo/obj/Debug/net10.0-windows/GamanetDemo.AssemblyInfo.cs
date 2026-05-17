@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GamanetDemo")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8aa275ae156cef921944ec704b681e616ac73fdb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0c98170f6ce60e9eeb33beb0bb347d9a72116ac3")]
 [assembly: System.Reflection.AssemblyProductAttribute("GamanetDemo")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GamanetDemo")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
