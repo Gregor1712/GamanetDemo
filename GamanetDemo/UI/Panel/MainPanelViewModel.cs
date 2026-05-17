@@ -1,9 +1,9 @@
 using System.Collections.ObjectModel;
 using GamanetDemo.Model;
 
-namespace GamanetDemo;
+namespace GamanetDemo.UI.Panel;
 
-internal class MainWindowViewModel
+internal class MainPanelViewModel
 {
     private _AppContext _appContext;
     private string _currentCountryFilter = "All";
@@ -13,7 +13,7 @@ internal class MainWindowViewModel
     public ObservableCollection<PersonEntity> FilteredPersons { get; }
     public ObservableCollection<string> Countries { get; }
 
-    public MainWindowViewModel(_AppContext context)
+    public MainPanelViewModel(_AppContext context)
     {
         _appContext = context;
         FilteredPersons = new ObservableCollection<PersonEntity>();

@@ -1,8 +1,17 @@
+using System.Globalization;
 using System.IO;
-using System.Text;
+using CsvHelper;
+using CsvHelper.Configuration;
 using GamanetDemo.Model;
 
 namespace GamanetDemo.DataSource;
+
+internal class CsvPersonRecord
+{
+    public string name { get; set; } = string.Empty;
+    public string country { get; set; } = string.Empty;
+    public string phone { get; set; } = string.Empty;
+}
 
 internal class CsvDataSource
 {
@@ -18,51 +27,25 @@ internal class CsvDataSource
         return await Task.Run(() => LoadPersons()).ConfigureAwait(false);
     }
 
-    public List<PersonEntity> LoadPersons()
+    private List<PersonEntity> LoadPersons()
     {
         var persons = new List<PersonEntity>();
         var filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "csv", "PersonsDemo.csv");
-        var lines = File.ReadAllLines(filePath);
 
-        for (int i = 1; i < lines.Length; i++)
+        using var reader = new StreamReader(filePath);
+        using var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)
         {
-            var line = lines[i];
-            if (string.IsNullOrWhiteSpace(line)) continue;
+            HasHeaderRecord = true
+        });
 
-            var fields = ParseCsvLine(line);
-            if (fields.Length < 6) continue;
-
+        var records = csv.GetRecords<CsvPersonRecord>();
+        foreach (var record in records)
+        {
             var person = new PersonEntity();
-            person.CopyFrom(fields);
+            person.CopyFrom(record);
             persons.Add(person);
         }
 
         return persons;
-    }
-
-    private static string[] ParseCsvLine(string line)
-    {
-        var fields = new List<string>();
-        bool inQuotes = false;
-        var field = new StringBuilder();
-
-        foreach (char c in line)
-        {
-            if (c == '"')
-            {
-                inQuotes = !inQuotes;
-            }
-            else if (c == ',' && !inQuotes)
-            {
-                fields.Add(field.ToString());
-                field.Clear();
-            }
-            else
-            {
-                field.Append(c);
-            }
-        }
-        fields.Add(field.ToString());
-        return fields.ToArray();
     }
 }

@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "aJRsxOWy+0I=",
+  "dgSpecHash": "UZYA7aPaOWw=",
   "success": true,
   "projectFilePath": "C:\\Users\\grego\\RiderProjects\\GamanetDemo\\GamanetDemo\\GamanetDemo.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\grego\\.nuget\\packages\\csvhelper\\33.1.0\\csvhelper.33.1.0.nupkg.sha512"
+  ],
   "logs": []
 }

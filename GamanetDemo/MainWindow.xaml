@@ -3,80 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:GamanetDemo"
-        xmlns:control="clr-namespace:GamanetDemo.UI.Control"
-        d:DataContext="{d:DesignInstance Type=local:MainWindowViewModel}"
+        xmlns:panel="clr-namespace:GamanetDemo.UI.Panel"
         mc:Ignorable="d"
         Title="Gamanet Demo - Persons" Height="600" Width="800">
     <Grid x:Name="RootContainer">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
-        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="10">
-            <TextBlock Text="Filter by Country:" VerticalAlignment="Center" Margin="0,0,5,0"/>
-            
-            <ComboBox x:Name="CountryFilter" Width="200"
-                      ItemsSource="{Binding Countries}"
-                      SelectionChanged="CountryFilter_SelectionChanged"/>
-            
-            <TextBlock Text="Sort by:" VerticalAlignment="Center" Margin="20,0,5,0"/>
-            <ToggleButton x:Name="SortDropdown" Width="150" Padding="5,3"
-                          HorizontalContentAlignment="Left">
-                <ToggleButton.Content>
-                    <Grid>
-                        <TextBlock x:Name="SortLabel" Text="Name"/>
-                        <Path Data="M 0 0 L 4 4 L 8 0 Z" Fill="Black"
-                              HorizontalAlignment="Right" VerticalAlignment="Center"
-                              Margin="0,1,0,0"/>
-                    </Grid>
-                </ToggleButton.Content>
-            </ToggleButton>
-            
-            <Popup PlacementTarget="{
-            Binding ElementName=SortDropdown}"
-                   Placement="Bottom" StaysOpen="False"
-                   IsOpen="{Binding IsChecked, ElementName=SortDropdown, Mode=TwoWay}">
-                <Border Background="White"
-                        BorderBrush="#CCCCCC"
-                        BorderThickness="1"
-                        Padding="8,5"
-                        MinWidth="140">
-                    <StackPanel>
-                        
-                        <CheckBox x:Name="SortByNameCheck"
-                                  Content="Name"
-                                  IsChecked="True"
-                                  Margin="0,2"
-                                  Checked="SortCheck_Changed"
-                                  Unchecked="SortCheck_Changed"/>
-                        
-                        <CheckBox x:Name="SortByCountryCheck"
-                                  Content="Country"
-                                  Margin="0,2"
-                                  Checked="SortCheck_Changed"
-                                  Unchecked="SortCheck_Changed"/>
-                        
-                    </StackPanel>
-                </Border>
-            </Popup>
-            
-        </StackPanel>
-
-        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Margin="10,0,10,10">
-            <ItemsControl ItemsSource="{Binding FilteredPersons}">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel/>
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <control:PersonCard Width="160" Margin="5"/>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </ScrollViewer>
+        <panel:MainPanel/>
     </Grid>
 </Window>
