@@ -31,13 +31,18 @@ public partial class MainWindow : Window
         }
     }
 
-    private void SortByName_Click(object sender, RoutedEventArgs e)
+    private void SortCheck_Changed(object sender, RoutedEventArgs e)
     {
-        _model.SortByName();
-    }
+        if (_model == null) return;
 
-    private void SortByCountry_Click(object sender, RoutedEventArgs e)
-    {
-        _model.SortByCountry();
+        bool byName = SortByNameCheck.IsChecked == true;
+        bool byCountry = SortByCountryCheck.IsChecked == true;
+
+        var parts = new List<string>();
+        if (byName) parts.Add("Name");
+        if (byCountry) parts.Add("Country");
+        SortLabel.Text = parts.Count > 0 ? string.Join(", ", parts) : "None";
+
+        _model.ApplySort(byName, byCountry);
     }
 }

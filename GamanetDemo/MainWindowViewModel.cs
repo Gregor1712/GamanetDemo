@@ -7,7 +7,8 @@ internal class MainWindowViewModel
 {
     private _AppContext _appContext;
     private string _currentCountryFilter = "All";
-    private string _currentSort = "Name";
+    private bool _sortByName = true;
+    private bool _sortByCountry;
 
     public ObservableCollection<PersonEntity> FilteredPersons { get; }
     public ObservableCollection<string> Countries { get; }
@@ -32,15 +33,10 @@ internal class MainWindowViewModel
         RefreshFilteredPersons();
     }
 
-    public void SortByName()
+    public void ApplySort(bool sortByName, bool sortByCountry)
     {
-        _currentSort = "Name";
-        RefreshFilteredPersons();
-    }
-
-    public void SortByCountry()
-    {
-        _currentSort = "Country";
+        _sortByName = sortByName;
+        _sortByCountry = sortByCountry;
         RefreshFilteredPersons();
     }
 
@@ -59,9 +55,7 @@ internal class MainWindowViewModel
     {
         var service = new PersonService(_appContext);
         var filtered = service.GetFilteredByCountry(_currentCountryFilter);
-        var sorted = _currentSort == "Country"
-            ? service.SortByCountry(filtered)
-            : service.SortByName(filtered);
+        var sorted = service.Sort(filtered, _sortByName, _sortByCountry);
 
         FilteredPersons.Clear();
         foreach (var person in sorted)

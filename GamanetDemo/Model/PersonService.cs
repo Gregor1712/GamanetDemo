@@ -17,14 +17,15 @@ internal class PersonService
         return persons.Where(p => p.Country.Equals(country)).ToList();
     }
 
-    public List<PersonEntity> SortByName(List<PersonEntity> persons)
+    public List<PersonEntity> Sort(List<PersonEntity> persons, bool byName, bool byCountry)
     {
-        return persons.OrderBy(p => p.Name).ToList();
-    }
-
-    public List<PersonEntity> SortByCountry(List<PersonEntity> persons)
-    {
-        return persons.OrderBy(p => p.Country).ThenBy(p => p.Name).ToList();
+        if (byCountry && byName)
+            return persons.OrderBy(p => p.Country).ThenBy(p => p.Name).ToList();
+        if (byCountry)
+            return persons.OrderBy(p => p.Country).ToList();
+        if (byName)
+            return persons.OrderBy(p => p.Name).ToList();
+        return persons;
     }
 
     public List<string> GetDistinctCountries()
