@@ -45,7 +45,7 @@ public partial class MainPanel : UserControl
         var parts = new List<string>();
         if (byName) parts.Add("Name");
         if (byCountry) parts.Add("Country");
-        SortLabel.Text = parts.Count > 0 ? string.Join(", ", parts) : "None";
+        SortLabel.Text = parts.Count > 0 ? "Sort: " + string.Join(", ", parts) : "Sorting Options";
 
         _model.ApplySort(byName, byCountry);
     }

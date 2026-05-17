@@ -29,3 +29,7 @@ C:\Users\grego\RiderProjects\GamanetDemo\GamanetDemo\obj\Debug\net10.0-windows\G
 C:\Users\grego\RiderProjects\GamanetDemo\GamanetDemo\obj\Debug\net10.0-windows\GamanetD.51485B65.Up2Date
 C:\Users\grego\RiderProjects\GamanetDemo\GamanetDemo\obj\Debug\net10.0-windows\UI\Panel\MainPanel.g.cs
 C:\Users\grego\RiderProjects\GamanetDemo\GamanetDemo\obj\Debug\net10.0-windows\UI\Panel\MainPanel.baml
+C:\Users\grego\RiderProjects\GamanetDemo\GamanetDemo\bin\Debug\net10.0-windows\MaterialDesignColors.dll
+C:\Users\grego\RiderProjects\GamanetDemo\GamanetDemo\bin\Debug\net10.0-windows\MaterialDesignThemes.Wpf.dll
+C:\Users\grego\RiderProjects\GamanetDemo\GamanetDemo\bin\Debug\net10.0-windows\Microsoft.Xaml.Behaviors.dll
+C:\Users\grego\RiderProjects\GamanetDemo\GamanetDemo\obj\Debug\net10.0-windows\App.baml

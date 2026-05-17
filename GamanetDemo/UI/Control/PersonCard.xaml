@@ -3,27 +3,46 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:model="clr-namespace:GamanetDemo.Model"
+             xmlns:converters="clr-namespace:GamanetDemo.UI.Converters"
              d:DataContext="{d:DesignInstance Type=model:PersonEntity}"
              mc:Ignorable="d"
-             d:DesignWidth="160">
+             d:DesignWidth="180">
+    <UserControl.Resources>
+        <converters:CountryToColorConverter x:Key="CountryToColorConverter"/>
+    </UserControl.Resources>
     <Grid x:Name="RootContainer">
-        <Border Padding="10" 
-                BorderBrush="#CCCCCC" 
-                BorderThickness="1"
-                Background="#F5F5F5"
-                CornerRadius="3">
+        <materialDesign:Card UniformCornerRadius="8" Padding="12"
+                             Background="{Binding Country, Converter={StaticResource CountryToColorConverter}}">
             <StackPanel>
-                <TextBlock Text="{Binding Name}"
-                           FontWeight="SemiBold"
-                           TextWrapping="Wrap"
-                           Margin="0,0,0,4"/>
-                <TextBlock Text="{Binding Country}"
-                           Foreground="#555555"
-                           Margin="0,0,0,2"/>
-                <TextBlock Text="{Binding Phone}"
-                           Foreground="#777777"/>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                    <materialDesign:PackIcon Kind="Account" VerticalAlignment="Center"
+                                             Margin="0,0,6,0" Foreground="{DynamicResource PrimaryHueMidBrush}"/>
+                    <TextBlock Text="{Binding Name}"
+                               Style="{StaticResource MaterialDesignBody1TextBlock}"
+                               FontWeight="SemiBold"
+                               TextWrapping="Wrap"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,3">
+                    <materialDesign:PackIcon Kind="MapMarker" VerticalAlignment="Center"
+                                             Width="14" Height="14"
+                                             Margin="0,0,6,0" Opacity="0.6"/>
+                    <TextBlock Text="{Binding Country}"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}"
+                               Opacity="0.7"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Phone" VerticalAlignment="Center"
+                                             Width="14" Height="14"
+                                             Margin="0,0,6,0" Opacity="0.6"/>
+                    <TextBlock Text="{Binding Phone}"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}"
+                               Opacity="0.5"/>
+                </StackPanel>
             </StackPanel>
-        </Border>
+        </materialDesign:Card>
     </Grid>
 </UserControl>

@@ -3,64 +3,111 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:panel="clr-namespace:GamanetDemo.UI.Panel"
              xmlns:control="clr-namespace:GamanetDemo.UI.Control"
              d:DataContext="{d:DesignInstance Type=panel:MainPanelViewModel}"
              mc:Ignorable="d"
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="600" d:DesignWidth="1000">
     <Grid x:Name="RootContainer">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="10">
-            <TextBlock Text="Filter by Country:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+        <Border Grid.Row="0" Background="#1A1A1A" CornerRadius="8" Margin="10,10,10,5" Padding="10,8">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
 
-            <ComboBox x:Name="CountryFilter" Width="200"
-                      ItemsSource="{Binding Countries}"
-                      SelectionChanged="CountryFilter_SelectionChanged"/>
+                <!-- Gamanet Logo -->
+                <Image Grid.Column="0" Source="pack://application:,,,/Images/gamanetLogo.png"
+                       Height="30" Stretch="Uniform"
+                       VerticalAlignment="Center" Margin="5,0,20,0"/>
 
-            <TextBlock Text="Sort by:" VerticalAlignment="Center" Margin="20,0,5,0"/>
-            <ToggleButton x:Name="SortDropdown" Width="150" Padding="5,3"
-                          HorizontalContentAlignment="Left">
-                <ToggleButton.Content>
-                    <Grid>
-                        <TextBlock x:Name="SortLabel" Text="Name"/>
-                        <Path Data="M 0 0 L 4 4 L 8 0 Z" Fill="Black"
-                              HorizontalAlignment="Right" VerticalAlignment="Center"
-                              Margin="0,1,0,0"/>
-                    </Grid>
-                </ToggleButton.Content>
-            </ToggleButton>
+                <!-- Filter by Country -->
+                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center"
+                            Margin="0,0,15,0">
+                    <materialDesign:PackIcon Kind="Filter" VerticalAlignment="Center"
+                                             Foreground="White" Margin="0,0,5,0"/>
+                    <TextBlock Text="Country:" VerticalAlignment="Center" Margin="0,0,6,0"
+                               Foreground="White"/>
+                    <ComboBox x:Name="CountryFilter" Width="180"
+                              materialDesign:HintAssist.Hint="Select country"
+                              materialDesign:TextFieldAssist.UnderlineBrush="White"
+                              Foreground="White"
+                              ItemsSource="{Binding Countries}"
+                              SelectionChanged="CountryFilter_SelectionChanged">
+                        <ComboBox.ItemContainerStyle>
+                            <Style TargetType="ComboBoxItem" BasedOn="{StaticResource MaterialDesignComboBoxItemStyle}">
+                                <Setter Property="Foreground" Value="Black"/>
+                            </Style>
+                        </ComboBox.ItemContainerStyle>
+                    </ComboBox>
+                </StackPanel>
 
-            <Popup PlacementTarget="{Binding ElementName=SortDropdown}"
-                   Placement="Bottom" StaysOpen="False"
-                   IsOpen="{Binding IsChecked, ElementName=SortDropdown, Mode=TwoWay}">
-                <Border Background="White"
-                        BorderBrush="#CCCCCC"
-                        BorderThickness="1"
-                        Padding="8,5"
-                        MinWidth="140">
-                    <StackPanel>
-                        <CheckBox x:Name="SortByNameCheck"
-                                  Content="Name"
-                                  IsChecked="True"
-                                  Margin="0,2"
-                                  Checked="SortCheck_Changed"
-                                  Unchecked="SortCheck_Changed"/>
+                <!-- Application Title -->
+                <TextBlock Grid.Column="2" Text="Application"
+                           Style="{StaticResource MaterialDesignHeadline5TextBlock}"
+                           HorizontalAlignment="Center" VerticalAlignment="Center"
+                           FontWeight="Medium" Foreground="White"/>
 
-                        <CheckBox x:Name="SortByCountryCheck"
-                                  Content="Country"
-                                  Margin="0,2"
-                                  Checked="SortCheck_Changed"
-                                  Unchecked="SortCheck_Changed"/>
-                    </StackPanel>
-                </Border>
-            </Popup>
-        </StackPanel>
+                <!-- Sort -->
+                <StackPanel Grid.Column="3" Orientation="Horizontal" VerticalAlignment="Center">
+                    <ToggleButton x:Name="SortDropdown"
+                                  Cursor="Hand"
+                                  Background="Transparent" BorderBrush="Gray" BorderThickness="1"
+                                  Width="220" Height="32">
+                        <ToggleButton.Template>
+                            <ControlTemplate TargetType="ToggleButton">
+                                <Border Background="{TemplateBinding Background}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="4" Padding="10,4">
+                                    <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </ToggleButton.Template>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Sort" VerticalAlignment="Center"
+                                                     Foreground="White" Margin="0,0,6,0"/>
+                            <TextBlock x:Name="SortLabel" Text="Sorting Options" VerticalAlignment="Center"
+                                       Foreground="White"/>
+                            <materialDesign:PackIcon Kind="ChevronDown" VerticalAlignment="Center"
+                                                     Foreground="White" Margin="8,0,0,0"/>
+                        </StackPanel>
+                    </ToggleButton>
 
-        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Margin="10,0,10,10">
+                    <Popup PlacementTarget="{Binding ElementName=SortDropdown}"
+                           Placement="Bottom" StaysOpen="False"
+                           IsOpen="{Binding IsChecked, ElementName=SortDropdown, Mode=TwoWay}">
+                        <materialDesign:Card UniformCornerRadius="8" Padding="12,8"
+                                             MinWidth="150">
+                            <StackPanel>
+                                <CheckBox x:Name="SortByNameCheck"
+                                          Content="Name"
+                                          IsChecked="True"
+                                          Margin="0,4"
+                                          Checked="SortCheck_Changed"
+                                          Unchecked="SortCheck_Changed"/>
+
+                                <CheckBox x:Name="SortByCountryCheck"
+                                          Content="Country"
+                                          Margin="0,4"
+                                          Checked="SortCheck_Changed"
+                                          Unchecked="SortCheck_Changed"/>
+                            </StackPanel>
+                        </materialDesign:Card>
+                    </Popup>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Margin="10,5,10,10">
             <ItemsControl ItemsSource="{Binding FilteredPersons}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -69,7 +116,7 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <control:PersonCard Width="160" Margin="5"/>
+                        <control:PersonCard Width="180" Margin="5"/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
