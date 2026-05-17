@@ -16,9 +16,11 @@
 
         <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="10">
             <TextBlock Text="Filter by Country:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+            
             <ComboBox x:Name="CountryFilter" Width="200"
                       ItemsSource="{Binding Countries}"
                       SelectionChanged="CountryFilter_SelectionChanged"/>
+            
             <TextBlock Text="Sort by:" VerticalAlignment="Center" Margin="20,0,5,0"/>
             <ToggleButton x:Name="SortDropdown" Width="150" Padding="5,3"
                           HorizontalContentAlignment="Left">
@@ -31,21 +33,35 @@
                     </Grid>
                 </ToggleButton.Content>
             </ToggleButton>
-            <Popup PlacementTarget="{Binding ElementName=SortDropdown}"
+            
+            <Popup PlacementTarget="{
+            Binding ElementName=SortDropdown}"
                    Placement="Bottom" StaysOpen="False"
                    IsOpen="{Binding IsChecked, ElementName=SortDropdown, Mode=TwoWay}">
-                <Border Background="White" BorderBrush="#CCCCCC" BorderThickness="1"
-                        Padding="8,5" MinWidth="140">
+                <Border Background="White"
+                        BorderBrush="#CCCCCC"
+                        BorderThickness="1"
+                        Padding="8,5"
+                        MinWidth="140">
                     <StackPanel>
-                        <CheckBox x:Name="SortByNameCheck" Content="Name"
-                                  IsChecked="True" Margin="0,2"
-                                  Checked="SortCheck_Changed" Unchecked="SortCheck_Changed"/>
-                        <CheckBox x:Name="SortByCountryCheck" Content="Country"
+                        
+                        <CheckBox x:Name="SortByNameCheck"
+                                  Content="Name"
+                                  IsChecked="True"
                                   Margin="0,2"
-                                  Checked="SortCheck_Changed" Unchecked="SortCheck_Changed"/>
+                                  Checked="SortCheck_Changed"
+                                  Unchecked="SortCheck_Changed"/>
+                        
+                        <CheckBox x:Name="SortByCountryCheck"
+                                  Content="Country"
+                                  Margin="0,2"
+                                  Checked="SortCheck_Changed"
+                                  Unchecked="SortCheck_Changed"/>
+                        
                     </StackPanel>
                 </Border>
             </Popup>
+            
         </StackPanel>
 
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Margin="10,0,10,10">
