@@ -6,7 +6,6 @@ namespace DemoPanel.Model;
 internal class PersonRepository
 {
     private _DemoPanelContext _dpContext { get; }
-
     public ObservableCollection<PersonEntity> Persons { get; }
 
     public PersonRepository(_DemoPanelContext context)
