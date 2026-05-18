@@ -1,6 +1,5 @@
-namespace GamanetDemo.Model;
-
-public class CsvPersonRecord
+namespace DemoPanel.Model;
+internal class CsvPersonRecord
 {
     public string name { get; set; } = string.Empty;
     public string country { get; set; } = string.Empty;

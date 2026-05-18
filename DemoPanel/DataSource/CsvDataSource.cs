@@ -6,14 +6,6 @@ using DemoPanel.Model;
 
 namespace DemoPanel.DataSource;
 
-internal class CsvPersonRecord
-{
-    public string name { get; set; } = string.Empty;
-    public string country { get; set; } = string.Empty;
-    public string email { get; set; } = string.Empty;
-    public string phone { get; set; } = string.Empty;
-}
-
 internal class CsvDataSource
 {
     private _DemoPanelContext _dpContext { get; }
