@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace GamanetDemo.UI.Control;
+namespace DemoPanel.UI.Control;
 
 public partial class AutoCompleteBox : UserControl
 {

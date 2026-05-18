@@ -1,11 +1,13 @@
+using DemoPanel.Model;
+
 namespace GamanetDemo.Model;
 
 internal class _AppContext
 {
-    public PersonRepository PersonRepo { get; }
+    public _DemoPanelContext _dpContext { get; }
 
     public _AppContext()
     {
-        PersonRepo = new PersonRepository(this);
+        _dpContext = new _DemoPanelContext();
     }
 }

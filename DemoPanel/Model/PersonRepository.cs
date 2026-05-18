@@ -1,27 +1,27 @@
 using System.Collections.ObjectModel;
-using GamanetDemo.DataSource;
+using DemoPanel.DataSource;
 
-namespace GamanetDemo.Model;
+namespace DemoPanel.Model;
 
 internal class PersonRepository
 {
-    private _AppContext _appContext { get; }
+    private _DemoPanelContext _dpContext { get; }
 
     public ObservableCollection<PersonEntity> Persons { get; }
 
-    public PersonRepository(_AppContext context)
+    public PersonRepository(_DemoPanelContext context)
     {
-        _appContext = context;
+        _dpContext = context;
         Persons = new();
     }
 
     public async Task LoadDataAsync()
     {
-        var persons = await new CsvDataSource(_appContext).LoadPersonsAsync();
+        var persons = await new CsvDataSource(_dpContext).LoadPersonsAsync();
         Persons.Clear();
         foreach (var item in persons)
         {
-            Persons.Add(item);  
+            Persons.Add(item);
         }
     }
 }

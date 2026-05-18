@@ -1,4 +1,6 @@
-namespace GamanetDemo.Model;
+using DemoPanel.DataSource;
+
+namespace DemoPanel.Model;
 
 internal static class PersonEntityExt
 {

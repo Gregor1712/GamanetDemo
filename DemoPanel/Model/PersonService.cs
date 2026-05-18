@@ -1,17 +1,17 @@
-namespace GamanetDemo.Model;
+namespace DemoPanel.Model;
 
 internal class PersonService
 {
-    private _AppContext _appContext { get; }
+    private _DemoPanelContext _dpContext { get; }
 
-    public PersonService(_AppContext context)
+    public PersonService(_DemoPanelContext context)
     {
-        _appContext = context;
+        _dpContext = context;
     }
 
     public List<PersonEntity> GetFilteredByCountry(string? country)
     {
-        var persons = _appContext.PersonRepo.Persons;
+        var persons = _dpContext.PersonRepo.Persons;
         if (string.IsNullOrEmpty(country) || country == "All")
             return persons.ToList();
         return persons.Where(p => p.Country.Equals(country)).ToList();
@@ -30,7 +30,7 @@ internal class PersonService
 
     public List<string> GetDistinctCountries()
     {
-        return _appContext.PersonRepo.Persons
+        return _dpContext.PersonRepo.Persons
             .Select(p => p.Country)
             .Distinct()
             .OrderBy(c => c)

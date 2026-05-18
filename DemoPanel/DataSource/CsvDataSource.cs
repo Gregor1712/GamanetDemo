@@ -2,17 +2,25 @@ using System.Globalization;
 using System.IO;
 using CsvHelper;
 using CsvHelper.Configuration;
-using GamanetDemo.Model;
+using DemoPanel.Model;
 
-namespace GamanetDemo.DataSource;
+namespace DemoPanel.DataSource;
+
+internal class CsvPersonRecord
+{
+    public string name { get; set; } = string.Empty;
+    public string country { get; set; } = string.Empty;
+    public string email { get; set; } = string.Empty;
+    public string phone { get; set; } = string.Empty;
+}
 
 internal class CsvDataSource
 {
-    private _AppContext _appContext { get; }
+    private _DemoPanelContext _dpContext { get; }
 
-    public CsvDataSource(_AppContext context)
+    public CsvDataSource(_DemoPanelContext context)
     {
-        _appContext = context;
+        _dpContext = context;
     }
 
     public async Task<List<PersonEntity>> LoadPersonsAsync()

@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:panel="clr-namespace:GamanetDemo.UI.Panel"
+        xmlns:panel="clr-namespace:DemoPanel.UI.Panel;assembly=DemoPanel"
         mc:Ignorable="d"
         Title="Gamanet Demo - Persons" Height="800" Width="1400"
         Style="{StaticResource MaterialDesignWindow}">

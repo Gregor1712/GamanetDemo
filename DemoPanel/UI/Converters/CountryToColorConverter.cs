@@ -2,7 +2,7 @@ using System.Globalization;
 using System.Windows.Data;
 using System.Windows.Media;
 
-namespace GamanetDemo.UI.Converters;
+namespace DemoPanel.UI.Converters;
 
 internal class CountryToColorConverter : IValueConverter
 {

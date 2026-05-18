@@ -1,7 +1,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace GamanetDemo.UI.Control;
+namespace DemoPanel.UI.Control;
 
 public partial class PersonCard : UserControl
 {

@@ -1,11 +1,11 @@
-<UserControl x:Class="GamanetDemo.UI.Panel.MainPanel"
+<UserControl x:Class="DemoPanel.UI.Panel.MainPanel"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             xmlns:panel="clr-namespace:GamanetDemo.UI.Panel"
-             xmlns:control="clr-namespace:GamanetDemo.UI.Control"
+             xmlns:panel="clr-namespace:DemoPanel.UI.Panel"
+             xmlns:control="clr-namespace:DemoPanel.UI.Control"
              d:DataContext="{d:DesignInstance Type=panel:MainPanelViewModel}"
              mc:Ignorable="d"
              d:DesignHeight="600" d:DesignWidth="1000">
@@ -29,8 +29,8 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- Gamanet Logo -->
-                <Image Grid.Column="0" 
-                       Source="pack://application:,,,/Images/gamanetLogo.png"
+                <Image Grid.Column="0"
+                       Source="pack://application:,,,/DemoPanel;component/Images/gamanetLogo.png"
                        Height="30"
                        Stretch="Uniform"
                        VerticalAlignment="Center"
@@ -82,7 +82,7 @@
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Sort"
                                                      VerticalAlignment="Center"
-                                                     Foreground="White" 
+                                                     Foreground="White"
                                                      Margin="0,0,6,0"/>
                             <TextBlock x:Name="SortLabel"
                                        Text="Sorting Options"
@@ -90,7 +90,7 @@
                                        Foreground="White"/>
                             <materialDesign:PackIcon Kind="ChevronDown"
                                                      VerticalAlignment="Center"
-                                                     Foreground="White" 
+                                                     Foreground="White"
                                                      Margin="8,0,0,0"/>
                         </StackPanel>
                     </ToggleButton>

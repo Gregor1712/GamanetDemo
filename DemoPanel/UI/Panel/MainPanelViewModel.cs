@@ -1,11 +1,12 @@
 using System.Collections.ObjectModel;
-using GamanetDemo.Model;
+using DemoPanel.Model;
 
-namespace GamanetDemo.UI.Panel;
+namespace DemoPanel.UI.Panel;
 
 internal class MainPanelViewModel
 {
-    private _AppContext _appContext;
+    private _DemoPanelContext _dpContext;
+
     private string _currentCountryFilter = "All";
     private bool _sortByName = true;
     private bool _sortByCountry;
@@ -13,16 +14,16 @@ internal class MainPanelViewModel
     public ObservableCollection<PersonEntity> FilteredPersons { get; }
     public ObservableCollection<string> Countries { get; }
 
-    public MainPanelViewModel(_AppContext context)
+    public MainPanelViewModel(_DemoPanelContext context)
     {
-        _appContext = context;
+        _dpContext = context;
         FilteredPersons = new ObservableCollection<PersonEntity>();
         Countries = new ObservableCollection<string>();
     }
 
     public async Task LoadPersonsAsync()
     {
-        await _appContext.PersonRepo.LoadDataAsync();
+        await _dpContext.PersonRepo.LoadDataAsync();
         RefreshCountries();
         RefreshFilteredPersons();
     }
@@ -42,7 +43,7 @@ internal class MainPanelViewModel
 
     private void RefreshCountries()
     {
-        var service = new PersonService(_appContext);
+        var service = new PersonService(_dpContext);
         var countries = service.GetDistinctCountries();
 
         Countries.Clear();
@@ -53,7 +54,7 @@ internal class MainPanelViewModel
 
     private void RefreshFilteredPersons()
     {
-        var service = new PersonService(_appContext);
+        var service = new PersonService(_dpContext);
         var filtered = service.GetFilteredByCountry(_currentCountryFilter);
         var sorted = service.Sort(filtered, _sortByName, _sortByCountry);
 

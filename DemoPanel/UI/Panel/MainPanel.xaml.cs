@@ -1,29 +1,26 @@
 using System.Windows;
 using System.Windows.Controls;
-using GamanetDemo.Model;
+using DemoPanel.Model;
 
-namespace GamanetDemo.UI.Panel;
+namespace DemoPanel.UI.Panel;
 
 public partial class MainPanel : UserControl
 {
-    private _AppContext? _appContext { get; set; }
+    private _DemoPanelContext _dpContext { get; }
     MainPanelViewModel? _model { get; set; }
 
     public MainPanel()
     {
         InitializeComponent();
-        DataContextChanged += MainPanel_DataContextChanged;
+        _dpContext = new _DemoPanelContext();
+        this.DataContextChanged += MainPanel_DataContextChanged;
     }
 
     private async void MainPanel_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
     {
-        if (e.NewValue is _AppContext context)
-        {
-            _appContext = context;
-            _model = new MainPanelViewModel(_appContext);
-            RootContainer.DataContext = _model;
-            await _model.LoadPersonsAsync();
-        }
+        _model = new MainPanelViewModel(_dpContext);
+        RootContainer.DataContext = _model;
+        await _model.LoadPersonsAsync();
     }
 
     private void CountryFilter_SelectionChanged(object sender, RoutedEventArgs e)
