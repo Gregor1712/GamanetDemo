@@ -15,7 +15,11 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Border Grid.Row="0" Background="#1A1A1A" CornerRadius="8" Margin="10,10,10,5" Padding="10,8">
+        <Border Grid.Row="0"
+                Background="#1A1A1A"
+                CornerRadius="8"
+                Margin="10,10,10,5"
+                Padding="10,8">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
@@ -25,9 +29,12 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- Gamanet Logo -->
-                <Image Grid.Column="0" Source="pack://application:,,,/Images/gamanetLogo.png"
-                       Height="30" Stretch="Uniform"
-                       VerticalAlignment="Center" Margin="5,0,20,0"/>
+                <Image Grid.Column="0" 
+                       Source="pack://application:,,,/Images/gamanetLogo.png"
+                       Height="30"
+                       Stretch="Uniform"
+                       VerticalAlignment="Center"
+                       Margin="5,0,20,0"/>
 
                 <!-- Filter by Country -->
                 <StackPanel Grid.Column="1"

@@ -10,25 +10,33 @@
         <TextBox x:Name="SearchTextBox"
                  materialDesign:HintAssist.Hint="Type to search..."
                  materialDesign:TextFieldAssist.UnderlineBrush="White"
-                 Foreground="White" CaretBrush="White"
-                 Width="180" VerticalAlignment="Center"
+                 Foreground="White" 
+                 CaretBrush="White"
+                 Width="180"
+                 VerticalAlignment="Center"
                  TextChanged="SearchTextBox_TextChanged"
                  GotFocus="SearchTextBox_GotFocus"
                  PreviewKeyDown="SearchTextBox_PreviewKeyDown"/>
 
         <Popup x:Name="SuggestionsPopup"
                PlacementTarget="{Binding ElementName=SearchTextBox}"
-               Placement="Bottom" StaysOpen="False"
+               Placement="Bottom"
+               StaysOpen="False"
                IsOpen="False">
-            <materialDesign:Card UniformCornerRadius="4" Padding="0"
-                                 MaxHeight="200" MinWidth="180">
+            <materialDesign:Card UniformCornerRadius="4"
+                                 Padding="0"
+                                 MaxHeight="200"
+                                 MinWidth="180">
                 <ListBox x:Name="SuggestionsList"
                          MaxHeight="200"
                          SelectionChanged="SuggestionsList_SelectionChanged">
                     <ListBox.ItemContainerStyle>
-                        <Style TargetType="ListBoxItem" BasedOn="{StaticResource MaterialDesignListBoxItem}">
-                            <Setter Property="Foreground" Value="Black"/>
-                            <Setter Property="Padding" Value="8,4"/>
+                        <Style TargetType="ListBoxItem" 
+                               BasedOn="{StaticResource MaterialDesignListBoxItem}">
+                            <Setter Property="Foreground"
+                                    Value="Black"/>
+                            <Setter Property="Padding"
+                                    Value="8,4"/>
                         </Style>
                     </ListBox.ItemContainerStyle>
                 </ListBox>
