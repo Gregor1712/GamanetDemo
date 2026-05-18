@@ -1,3 +1,5 @@
+using Gamanet.Common;
+
 namespace GamanetDemo.Model;
 
 internal class PersonEntity : PropertyChangedBase

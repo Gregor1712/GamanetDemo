@@ -1,7 +1,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace GamanetDemo.Model;
+namespace Gamanet.Common;
 
 public class PropertyChangedBase : INotifyPropertyChanged
 {
