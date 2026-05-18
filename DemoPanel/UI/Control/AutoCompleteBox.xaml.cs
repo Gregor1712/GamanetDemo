@@ -51,16 +51,6 @@ public partial class AutoCompleteBox : UserControl
     public AutoCompleteBox()
     {
         InitializeComponent();
-        // Loaded += (_, _) =>
-        // {
-        //     var window = Window.GetWindow(this);
-        //     if (window != null)
-        //     {
-        //         window.LocationChanged += (_, _) => SuggestionsPopup.IsOpen = false;
-        //         window.SizeChanged += (_, _) => SuggestionsPopup.IsOpen = false;
-        //         window.Deactivated += (_, _) => SuggestionsPopup.IsOpen = false;
-        //     }
-        // };
     }
 
     private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
