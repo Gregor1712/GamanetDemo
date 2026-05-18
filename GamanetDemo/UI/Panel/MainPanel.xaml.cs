@@ -26,7 +26,7 @@ public partial class MainPanel : UserControl
         }
     }
 
-    private void CountryFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    private void CountryFilter_SelectionChanged(object sender, RoutedEventArgs e)
     {
         if (_model == null) return;
         if (CountryFilter.SelectedItem is string country)
@@ -39,8 +39,8 @@ public partial class MainPanel : UserControl
     {
         if (_model == null) return;
 
-        bool byName = SortByNameCheck.IsChecked == true;
-        bool byCountry = SortByCountryCheck.IsChecked == true;
+        var byName = SortByNameCheck.IsChecked == true;
+        var byCountry = SortByCountryCheck.IsChecked == true;
 
         var parts = new List<string>();
         if (byName) parts.Add("Name");
