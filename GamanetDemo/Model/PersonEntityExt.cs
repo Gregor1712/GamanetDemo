@@ -1,5 +1,3 @@
-using GamanetDemo.DataSource;
-
 namespace GamanetDemo.Model;
 
 internal static class PersonEntityExt
