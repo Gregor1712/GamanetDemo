@@ -51,6 +51,16 @@ public partial class AutoCompleteBox : UserControl
     public AutoCompleteBox()
     {
         InitializeComponent();
+        // Loaded += (_, _) =>
+        // {
+        //     var window = Window.GetWindow(this);
+        //     if (window != null)
+        //     {
+        //         window.LocationChanged += (_, _) => SuggestionsPopup.IsOpen = false;
+        //         window.SizeChanged += (_, _) => SuggestionsPopup.IsOpen = false;
+        //         window.Deactivated += (_, _) => SuggestionsPopup.IsOpen = false;
+        //     }
+        // };
     }
 
     private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -75,11 +85,35 @@ public partial class AutoCompleteBox : UserControl
 
         SuggestionsList.ItemsSource = filtered;
         SuggestionsPopup.IsOpen = filtered.Count > 0 && SearchTextBox.IsFocused;
+
+        if (string.IsNullOrEmpty(searchText))
+        {
+            SelectedItem = string.Empty;
+            RaiseEvent(new RoutedEventArgs(SelectionChangedEvent, this));
+        }
     }
 
     private void SearchTextBox_GotFocus(object sender, RoutedEventArgs e)
     {
         SearchTextBox_TextChanged(sender, null!);
+    }
+
+    private void SearchTextBox_LostFocus(object sender, RoutedEventArgs e)
+    {
+        // Delay closing so ListBox selection can fire first
+        Dispatcher.BeginInvoke(() =>
+        {
+            if (!SearchTextBox.IsFocused && !SuggestionsList.IsFocused)
+                SuggestionsPopup.IsOpen = false;
+        }, System.Windows.Threading.DispatcherPriority.Background);
+    }
+
+    private void SearchTextBox_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+    {
+        if (!SuggestionsPopup.IsOpen)
+        {
+            SearchTextBox_TextChanged(sender, null!);
+        }
     }
 
     private void SearchTextBox_PreviewKeyDown(object sender, KeyEventArgs e)

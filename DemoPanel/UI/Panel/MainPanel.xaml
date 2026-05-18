@@ -55,7 +55,7 @@
                 </StackPanel>
 
                 <!-- Application Title -->
-                <TextBlock Grid.Column="2" Text="Application"
+                <TextBlock Grid.Column="2" Text="Persons Demo"
                            Style="{StaticResource MaterialDesignHeadline5TextBlock}"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center"

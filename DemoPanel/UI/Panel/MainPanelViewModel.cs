@@ -7,7 +7,7 @@ internal class MainPanelViewModel
 {
     private _DemoPanelContext _dpContext;
 
-    private string _currentCountryFilter = "All";
+    private string _currentCountryFilter = string.Empty;
     private bool _sortByName = true;
     private bool _sortByCountry;
 
@@ -47,7 +47,6 @@ internal class MainPanelViewModel
         var countries = service.GetDistinctCountries();
 
         Countries.Clear();
-        Countries.Add("All");
         foreach (var country in countries)
             Countries.Add(country);
     }

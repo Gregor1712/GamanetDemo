@@ -16,12 +16,14 @@
                  VerticalAlignment="Center"
                  TextChanged="SearchTextBox_TextChanged"
                  GotFocus="SearchTextBox_GotFocus"
+                 LostFocus="SearchTextBox_LostFocus"
+                 PreviewMouseDown="SearchTextBox_PreviewMouseDown"
                  PreviewKeyDown="SearchTextBox_PreviewKeyDown"/>
 
         <Popup x:Name="SuggestionsPopup"
                PlacementTarget="{Binding ElementName=SearchTextBox}"
                Placement="Bottom"
-               StaysOpen="False"
+               StaysOpen="True"
                IsOpen="False">
             <materialDesign:Card UniformCornerRadius="4"
                                  Padding="0"

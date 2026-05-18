@@ -26,10 +26,8 @@ public partial class MainPanel : UserControl
     private void CountryFilter_SelectionChanged(object sender, RoutedEventArgs e)
     {
         if (_model == null) return;
-        if (CountryFilter.SelectedItem is string country)
-        {
-            _model.FilterByCountry(country);
-        }
+        var country = CountryFilter.SelectedItem as string ?? string.Empty;
+        _model.FilterByCountry(country);
     }
 
     private void SortCheck_Changed(object sender, RoutedEventArgs e)

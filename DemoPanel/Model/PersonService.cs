@@ -12,7 +12,7 @@ internal class PersonService
     public List<PersonEntity> GetFilteredByCountry(string? country)
     {
         var persons = _dpContext.PersonRepo.Persons;
-        if (string.IsNullOrEmpty(country) || country == "All")
+        if (string.IsNullOrEmpty(country))
             return persons.ToList();
         return persons.Where(p => p.Country.Equals(country)).ToList();
     }
